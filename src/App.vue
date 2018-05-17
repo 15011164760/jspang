@@ -1,78 +1,43 @@
 <template>
   <div id="app">
-      <h2 v-html="title"></h2>
-      <input type="" name="" v-model="newItem" v-on:keyup.enter="addnew">
-      <!-- <h2>{{newItem}}</h2> -->
-      <ul>
-          <li v-for="item in items" v-bind:class="{finished:item.isfinished,finished1:item.isfinished}" v-on:click="dosomething(item)">
-             <p v-text="item.label"></p>  
-             <!-- <p v-text="item.isfinished"></p>   -->
-          </li>
-      </ul>  
-      <p>{{sonMsg}}</p>
-      <Compontenta msgFromfather="you die" v-on:childsay="listenmyson"></Compontenta> 
+      <!-- <p>{{ $router.name}}</p> -->
+      <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+		  <router-view ></router-view>
+		 <router-view name="right" style="float:right;width:50%;height:300px;"></router-view>
+		 <router-view name="foot" style="float:right;width:100%;height:300px;"></router-view>
+      <p>导航 ：
+	      <router-link to="/">首页</router-link> | 
+          <router-link to="/hi">Hi页面</router-link> |
+          <router-link to="/params/198/jspang website is very good">params page</router-link> |
+          <router-link to="/gopage/1990/gobackparams">gopage</router-link> |
+          <router-link to="/jspang">Hi1</router-link> |
+          <router-link to="/count">count</router-link> |
+          <!-- <router-link to="/params/198/jspang website is very good">params</router-link> | -->
+      </p>
+      <button @click="func">跳转参数页面</button>
+       <button @click="goback">返回</button>
   </div>
 </template>
-
 <script>
-  import Store from './store.js'
-  import Compontenta from './components/compontents'
-  // console.log(Compontenta)
-  // console.log(Store);
 export default {
-  data:function() {
-        return {
-          newItem:'',
-          title:'<span>nihao</span>头部文件',
-           items:Store.fetch(),
-           // items:[],
-           liclass:'liclassclassvalue',
-           sonMsg:'默认值'
-           // you:'nifadsi',
-          // you:'father'
-
-        }
+  data() {   
+       return  {}
   },
-  components:{Compontenta},
+  created(){
+  	// component
+  },
   methods:{
-    dosomething:function(item){
-            console.log(item);
-            item.isfinished=!item.isfinished
-           },
-           addnew:function(){
-            console.log(this.newItem);
-            this.items.push({
-                label:this.newItem,
-                isfinished:true,
-              })
-            this.newItem='';
-           },
-           listenmyson:function(msg){
-              this.sonMsg=msg;
-           }
-  },
-  watch:{
-    'items':{
-      handler:function(newval){
-          Store.save(newval);
-      },
-      deep:true
-    }
-  }
-}
+     func(){
+     	this.$router.push('/params/'+19900+'/'+'yangdongxu website is very good')
+     },
+     goback(){
+     	this.$router.go(-1);
+     }
+  }    
+}  
 </script>
 
 <style>
-.finished{
-    text-decoration: underline;
-}
-.finished1{
-  color:red;
-}
-p{
-  width:20%;
-  height:40px;
-  margin:0;
-  paddiing:0;
-}
 </style>

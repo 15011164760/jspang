@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
    <h1>{{ msg }}</h1>
-   <button v-on:click="doThing">click</button> 
+   <button v-on:click="doThing">click conpontents </button> 
     <h2>{{msgFromfather}}</h2>
     </ul>
   </div>

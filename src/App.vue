@@ -8,7 +8,7 @@
 		 <router-view name="right" style="float:right;width:50%;height:300px;"></router-view>
 		 <router-view name="foot" style="float:right;width:100%;height:300px;"></router-view>
       <p>导航 ：
-	      <router-link to="/">首页</router-link> | 
+	      <router-link to="/">首页1</router-link> |
           <router-link to="/hi">Hi页面</router-link> |
           <router-link to="/params/198/jspang website is very good">params page</router-link> |
           <router-link to="/gopage/1990/gobackparams">gopage</router-link> |
@@ -22,7 +22,7 @@
 </template>
 <script>
 export default {
-  data() {   
+  data() {
        return  {}
   },
   created(){
@@ -35,8 +35,8 @@ export default {
      goback(){
      	this.$router.go(-1);
      }
-  }    
-}  
+  }
+}
 </script>
 
 <style>
